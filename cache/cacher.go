@@ -15,3 +15,17 @@ type Cacher interface {
 type cacher struct {
 	mc *memcache.Client
 }
+
+func New(mc *memcache.Client) Cacher {
+	return &cacher{
+		mc: mc,
+	}
+}
+
+func (c *cacher) PutFile(fullpath string) (err error) {
+	return
+}
+
+func (c *cacher) GetFile(name string) (data []byte, err error) {
+	return
+}
