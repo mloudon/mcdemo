@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z "$(docker ps -aq --filter "name=mcdemo-memcache")" ]; then
+    bin/docker/start_memcache
+fi
+
+docker run -d --name mcdemo \
+	-p 5000:5000 \
+	--link mcdemo-memcache:mcdemo-memcache \
+	mcdemo

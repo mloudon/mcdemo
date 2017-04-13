@@ -1,3 +1,5 @@
 package: github.com/mloudon/mcdemo
 import:
 - package: github.com/bradfitz/gomemcache/memcache
+- package: github.com/gorilla/mux
+- package: github.com/neocortical/log5go
