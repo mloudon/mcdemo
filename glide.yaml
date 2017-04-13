@@ -1,0 +1,3 @@
+package: github.com/mloudon/mcdemo
+import:
+- package: github.com/bradfitz/gomemcache/memcache
