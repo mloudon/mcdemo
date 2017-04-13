@@ -1,0 +1,2 @@
+# mcdemo
+memcached demo project
