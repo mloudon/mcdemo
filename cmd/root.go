@@ -34,10 +34,8 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
+	cobra.OnInitialize(initMemcached)
 	RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.mcdemo.yaml)")
-
-	mc = memcache.New(fmt.Sprintf("%s:%d", viper.GetString("mchost"), viper.GetInt("mcport")))
-	log.Debug("mc client: %+v", mc)
 }
 
 func initConfig() {
@@ -46,10 +44,14 @@ func initConfig() {
 	}
 
 	viper.SetConfigName(".mcdemo") // name of config file (without extension)
-	viper.AddConfigPath("$HOME")   // adding home directory as first search path
+	viper.AddConfigPath(".")       // adding home directory as first search path
 	viper.AutomaticEnv()           // read in environment variables that match
 
 	if err := viper.ReadInConfig(); err == nil {
-		fmt.Println("Using config file:", viper.ConfigFileUsed())
+		log.Info("Using config file: %s", viper.ConfigFileUsed())
 	}
+}
+
+func initMemcached() {
+	mc = memcache.New(fmt.Sprintf("%s:%d", viper.GetString("mchost"), viper.GetInt("mcport")))
 }

@@ -15,10 +15,13 @@ var putCmd = &cobra.Command{
 			panic("Must specify filename as argument")
 		}
 
-		c := cache.New(mc)
-		err := c.PutFile(args[0])
+		fc := cache.NewFileCacher(mc)
+		log.Info("storing %s...", args[0])
+		err := fc.Store(args[0])
 		if err != nil {
 			panic(err)
+		} else {
+			log.Info("...done")
 		}
 	},
 }
