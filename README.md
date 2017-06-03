@@ -1,7 +1,7 @@
 # mcdemo
-```
 Store and retrieve large files from memcached
 
+```
 Usage:
   mcdemo [command]
 
