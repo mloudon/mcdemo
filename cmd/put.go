@@ -7,8 +7,8 @@ import (
 
 var putCmd = &cobra.Command{
 	Use:   "put",
-	Short: "A brief description of your command",
-	Long:  ``,
+	Short: "Store a file to memcached.",
+	Long:  `Store a file to memcached. One positional argument - the filename`,
 
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 1 {

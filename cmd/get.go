@@ -7,8 +7,8 @@ import (
 
 var getCmd = &cobra.Command{
 	Use:   "get",
-	Short: "A brief description of your command",
-	Long:  ``,
+	Short: "Get a stored file.",
+	Long:  `Get a stored file. Two positions arguments - the original filename and the output file to write to`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 2 {
 			panic("Must specify stored filename and output as arguments")
